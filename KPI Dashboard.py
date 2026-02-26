@@ -71,10 +71,10 @@ with tab1:
 with tab2:
     st.subheader("Filter KPI by Site")
 
-    site_list = sorted(df["site"].unique())
-    selected_site = st.selectbox("Select Site", site_list)
+    site = sorted(df["site"].unique())
+    selected_site = st.selectbox("Select Site", site)
 
-    df_site = df[df["site"] == selected_site]
+    df_site = df[df["site"] == site]
 
     col1, col2, col3 = st.columns(3)
 
@@ -97,4 +97,5 @@ with tab2:
 # =========================================
 
 with st.expander("🔍 Preview Data"):
+
     st.dataframe(df)
