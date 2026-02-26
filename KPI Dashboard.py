@@ -68,10 +68,7 @@ with tab1:
 # TAB 2 – FILTER BY SITE
 # =========================================
 
-with tab2:
-    st.subheader("Filter KPI by Site")
-
-  # Clean site column
+# Clean site column
 df["site"] = df["site"].astype(str)
 
 # Drop missing
@@ -80,22 +77,6 @@ df = df[df["site"].notna()]
 # Generate site list
 site_list = sorted(df["site"].unique())
 
-    col1, col2, col3 = st.columns(3)
-
-    col1.metric("Availability", f"{df_site['availability'].mean():.2f}%")
-    col2.metric("Traffic", f"{df_site['traffic'].mean():.2f}")
-    col3.metric("CSSR", f"{df_site['cssr'].mean():.2f}%")
-
-    st.divider()
-
-    st.subheader(f"Trend for {selected_site}")
-
-    fig2, ax2 = plt.subplots()
-    ax2.plot(df_site["date"], df_site["availability"])
-    ax2.set_xlabel("Date")
-    ax2.set_ylabel("Availability (%)")
-    st.pyplot(fig2)
-
 # =========================================
 # DATA PREVIEW
 # =========================================
@@ -103,4 +84,5 @@ site_list = sorted(df["site"].unique())
 with st.expander("🔍 Preview Data"):
 
     st.dataframe(df)
+
 
